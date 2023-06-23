@@ -70,8 +70,6 @@
 			var positionX = 0;
 			var points = 0;
 			var speed = 10;
-			var positionY;
-			var speedY;
 			var boardHeight = jQuery(window).height(); 
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -79,21 +77,16 @@
 			turn it around! 
 			*/
 			function update() {
-				positionY = positionY + speedY;
+				
 				positionX = positionX + speed;
-				moveBoxTo(positionX, positionY);
+				moveBoxTo(positionX);
 				if (positionX > boardWidth) {
 					speed = -speed;
 				}
 				if (positionX < 0 ) {
 					speed = -speed;
 				}
-				if (positionY > boardHeight) {
-					speedY = -speedY;
-				}
-				if (positionY < 0 ) {
-					speedY = -speedY;
-				}
+				
 			};
 
 			/* 
@@ -103,7 +96,6 @@
 			*/
 			function handleBoxClick() {
 				positionX = 0;
-				positionY = 0;
 				points = points + 1;
 				
 				changeBoxText(points);
